@@ -4,8 +4,9 @@ import Promise from 'promise';
 import requestify from 'requestify';
 import apiUrls from './apiUrls';
 
-function load () {
-    const url = '/categories';
+function load (categoryId) {
+    const url = '/category/' + categoryId + '/offers';
+    console.log(apiUrls.getUrl(url));
 
     return new Promise((resolve, reject) => {
         requestify.request(apiUrls.getUrl(url), {
