@@ -11,15 +11,16 @@ function getApiKey () {
 }
 
 function generateKeyParam () {
-    return '?key=' + getApiKey();
+    return 'key=' + getApiKey();
 }
 
 function getUrl (url) {
-    return zoomosApiUrl + url + generateKeyParam();
+    return zoomosApiUrl + url + (url[url.length -1] !== '&' ? '?' : '') + generateKeyParam();
 }
 
 function getRequest (url) {
     let zoomosApiUrl = getUrl(url);
+    console.log(zoomosApiUrl);
 
     return new Promise((resolve, reject) => {
         requestify.request(zoomosApiUrl, {
