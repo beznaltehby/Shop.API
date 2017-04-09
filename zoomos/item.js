@@ -1,11 +1,14 @@
 'use strict';
 
+import Promise from 'promise';
 import apiUrls from './apiUrls';
+import _ from 'lodash';
 
 function load (itemId) {
-    const url = '/item/' + itemId;
+    const itemUrl = '/item/' + itemId;
+    const offerUrl = '/offer/' + itemId;
 
-    return apiUrls.getRequest(url);
+    return Promise.all([apiUrls.getRequest(itemUrl), apiUrls.getRequest(offerUrl)]).then(results => _.merge(...results));
 }
 
 export default {
