@@ -4,6 +4,8 @@
   "description": "Server api for web ui",
   "main": "app.js",
   "scripts": {
+    "build": "rm -rf ./build && babel -d ./build ./app.js && babel -d ./build/boot ./boot && babel -d ./build/routes ./routes && babel -d ./build/routes ./routes",
+    "start": "babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
